@@ -1,0 +1,21 @@
+{
+  "name": "shooting-factory",
+  "version": "1.0.0",
+  "description": "shooting some APIs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "localhost 'src' -p 8808",
+    "tsc": "tsc"
+  },
+  "author": "Marian Kucharski",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "@types/node": "^11.11.2",
+    "localhost": "^0.2.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
