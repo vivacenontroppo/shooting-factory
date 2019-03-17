@@ -7,18 +7,27 @@ export class Generate {
   public input: any;
   public rhymed: any;
 
-  constructor(){
+  constructor() {
     this.textArea = document.getElementById('placeholder');
     this.generateButton = document.getElementById('request');
     this.input = document.getElementById('input');
   }
 
-  public getRhymeWord = (myWord?: string) => {
-    let wynik
+  public getRhymeWord = (myWord?: string, position?: number, property?) => {
     const url = `https://api.datamuse.com/words?rel_rhy=${myWord}`
-    
-    getData(url).then(result => wynik = result)
 
-    return wynik
+    if (position === undefined) {
+      return getData(url).then(result => {
+        this.rhymed = result;
+
+        return this.rhymed
+      })
+    } else {
+      return getData(url).then(result => {
+        this.rhymed = result[position][property];
+
+        return this.rhymed
+      })
+    }
   }
 }
