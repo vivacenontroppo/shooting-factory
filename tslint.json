@@ -190,7 +190,7 @@
         "ignore-bound-class-methods"
         // fix: "Unnecessary semicolon" error if use: () => {...};
       ],
-      "no-debugger": true,
+      "no-debugger": false,
       "import-spacing": false,
       "no-consecutive-blank-lines": true,
       "max-classes-per-file": [

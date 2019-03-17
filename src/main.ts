@@ -2,20 +2,17 @@ import { Generate } from './generate'
 
 const generator = new Generate()
 
-const strzelaj = (word, position, property?) => generator.getRhymeWord(word, position, property)
-
-strzelaj('please', 2, 'score').then(value => console.log(value))
-
-const strzelajGuzik = () => {
+const init = () => {
 
   generator.generateButton.addEventListener('click', () => {
     const word = generator.input.value
 
-    strzelaj(word, 0, 'word').then(value => {
+    generator.getRhymeWord(word, 0, 'word').then(value => {
+      debugger
       let wynik = JSON.stringify(value)
-      return generator.textArea.innerText = wynik})
+      return generator.textArea.innerText = `${word} rhymes to ${wynik}`})
   })
 
 }
 
-strzelajGuzik()
+init()
