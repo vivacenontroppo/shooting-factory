@@ -1,17 +1,15 @@
-
 const getData = async (url: string) => {
-
-  try { 
+  try {
     const response = await fetch(url);
-      if (response.ok) {
-        const mine = response.json()
-        
-        return mine
-      }
-      throw new Error ('Request failed!');
-  } catch (error) {
-    console.log(error)
-  }
-}
+    if (response.ok) {
+      const mine = response.json();
 
-export { getData }
+      return mine;
+    }
+    throw new Error("Request failed!");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getData };

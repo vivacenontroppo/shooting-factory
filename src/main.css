@@ -12,20 +12,23 @@ h1{
   font-family: Helvetica;
   color: rgb(118, 30, 206);
 }
-#input{
+input{
   padding: 0px;
   font-size: 14pt;
   font-family: Helvetica;
   text-align:center;
 }
+ul{
+  list-style: none;
+}
 #placeholder {
   padding: 0px;
   font-size: 16pt;
   font-family: Helvetica;
-  text-align:center;
+  text-align: center;
   color: rgb(117, 129, 129);
 }
-#request {
+button {
   margin-top: 10%;
   width: 20%;
   padding: 10px;
