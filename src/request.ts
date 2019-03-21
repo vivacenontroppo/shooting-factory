@@ -8,7 +8,7 @@ const getData = async (url: string): Promise<JSON> => {
     }
     throw new Error('Request failed!');
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 };
 

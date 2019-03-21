@@ -10,7 +10,7 @@ export class Generate {
   public listElement: HTMLCollectionOf<HTMLLIElement>;
 
   constructor() {
-    this.resultsList = document.getElementById('placeholder') as HTMLUListElement;
+    this.resultsList = document.getElementById('list') as HTMLUListElement;
     this.rhymeButton = document.getElementById('rhyme') as HTMLButtonElement;
     this.similarWordButton = document.getElementById('similar') as HTMLButtonElement;
     this.usedToDescribe = document.getElementById('describe') as HTMLButtonElement;
@@ -47,4 +47,12 @@ export class Generate {
       return this.resultWord;
     });
   };
+
+  public clear = (): void => {
+    const listLength = this.listElement ? this.listElement.length : 0;
+    for (let i = 0; i < listLength; i++) {
+      this.resultsList.removeChild(this.resultsList.firstElementChild);
+    }
+  };
+
 }
