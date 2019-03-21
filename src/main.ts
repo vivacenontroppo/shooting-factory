@@ -1,47 +1,57 @@
-import { Generate } from "./generate";
+import { Generate } from './generate';
 
 const generator = new Generate();
 
-var clear = () => {
-  const listLength = generator.listElement.length;
+const clear = (): void => {
+  const listLength = generator.listElement ? generator.listElement.length : 0;
   for (let i = 0; i < listLength; i++) {
-    generator.textArea.removeChild(generator.textArea.firstElementChild);
+    generator.resultsList.removeChild(generator.resultsList.firstElementChild);
   }
 };
 
-const init = () => {
-  generator.generateButton.addEventListener("click", () => {
+const init = (): void => {
+  generator.rhymeButton.addEventListener('click', () => {
     clear();
     const word = generator.input.value;
-    for (let i = 0; i < 10; i++) {
-      generator.getRhymeWord(word).then(value => {
-        const node = document.createElement("LI");
+    generator.getRhymeWord(word).then(value => {
+      for (let i = 0; i < 10; i++) {
+        const node = document.createElement('LI');
         const textnode = document.createTextNode(
-          `${i}: ${word} rhymes to ${JSON.stringify(value[i]["word"])}`
+          `${i + 1}: ${word} rhymes to ${value[i].word}`
         );
         node.appendChild(textnode);
-        document.getElementById("placeholder").appendChild(node);
-      });
-    }
-  });
-
-  generator.similarWordButton.addEventListener("click", () => {
-    clear();
-    const word = generator.input.value;
-    generator.getSimilarWord(word, 0, "word").then(value => {
-      let wynik = JSON.stringify(value);
-
-      return (generator.textArea.innerText = `${word} is similar to ${wynik}`);
+        document.getElementById('placeholder').appendChild(node);
+      }
     });
   });
 
-  generator.usedToDescribe.addEventListener("click", () => {
+  generator.similarWordButton.addEventListener('click', () => {
     clear();
     const word = generator.input.value;
-    generator.getUsedToDescribeWord(word, 0, "word").then(value => {
-      let wynik = JSON.stringify(value);
+    generator.getSimilarWord(word).then(value => {
+      for (let i = 0; i < 10; i++) {
+        const node = document.createElement('LI');
+        const textnode = document.createTextNode(
+          `${i + 1}: ${word} is similar to ${value[i].word}`
+        );
+        node.appendChild(textnode);
+        document.getElementById('placeholder').appendChild(node);
+      }
+    });
+  });
 
-      return (generator.textArea.innerText = `${word} can descibe ${wynik}`);
+  generator.usedToDescribe.addEventListener('click', () => {
+    clear();
+    const word = generator.input.value;
+    generator.getDescribeWord(word).then(value => {
+      for (let i = 0; i < 10; i++) {
+        const node = document.createElement('LI');
+        const textnode = document.createTextNode(
+          `${i + 1}: ${word} can be described with ${value[i].word}`
+        );
+        node.appendChild(textnode);
+        document.getElementById('placeholder').appendChild(node);
+      }
     });
   });
 };

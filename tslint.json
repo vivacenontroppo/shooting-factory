@@ -206,7 +206,7 @@
         true,
         120
       ],
-      "no-magic-numbers": true,
+      "no-magic-numbers": false,
       "array-type": [
         true,
         "array"

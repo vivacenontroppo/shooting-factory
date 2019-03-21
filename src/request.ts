@@ -1,4 +1,4 @@
-const getData = async (url: string) => {
+const getData = async (url: string): Promise<JSON> => {
   try {
     const response = await fetch(url);
     if (response.ok) {
@@ -6,9 +6,9 @@ const getData = async (url: string) => {
 
       return mine;
     }
-    throw new Error("Request failed!");
+    throw new Error('Request failed!');
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
 

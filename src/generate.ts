@@ -1,80 +1,50 @@
-import { getData } from "./module";
+import { getData } from './request';
 
 export class Generate {
-  public textArea: any;
-  public generateButton: any;
-  public similarWordButton: any;
-  public usedToDescribe: any;
-  public input: any;
-  public resultWord: any;
-  public listElement: any;
-  public clearButton: any;
+  public resultsList: HTMLUListElement;
+  public rhymeButton: HTMLButtonElement;
+  public similarWordButton: HTMLButtonElement;
+  public usedToDescribe: HTMLButtonElement;
+  public input: HTMLInputElement;
+  public resultWord: JSON;
+  public listElement: HTMLCollectionOf<HTMLLIElement>;
 
   constructor() {
-    this.textArea = document.getElementById("placeholder");
-    this.generateButton = document.getElementById("rhyme");
-    this.similarWordButton = document.getElementById("similar");
-    this.usedToDescribe = document.getElementById("describe");
-    this.input = document.getElementById("input");
-    this.listElement = document.getElementsByTagName("li");
-    this.clearButton = document.getElementById("clear");
+    this.resultsList = document.getElementById('placeholder') as HTMLUListElement;
+    this.rhymeButton = document.getElementById('rhyme') as HTMLButtonElement;
+    this.similarWordButton = document.getElementById('similar') as HTMLButtonElement;
+    this.usedToDescribe = document.getElementById('describe') as HTMLButtonElement;
+    this.input = document.getElementById('input') as HTMLInputElement;
+    this.listElement = document.getElementsByTagName('li');
   }
 
-  public getRhymeWord = (myWord?: string, position?: number, property?) => {
-    const url = `https://api.datamuse.com/words?rel_rhy=${myWord}`;
+  public getRhymeWord = (theWord: string): Promise<JSON> => {
+    const url = `https://api.datamuse.com/words?rel_rhy=${theWord}`;
 
-    if (position !== undefined) {
-      return getData(url).then(result => {
-        this.resultWord = result[position][property];
-
-        return this.resultWord;
-      });
-    } else {
-      return getData(url).then(result => {
+    return getData(url).then(result => {
         this.resultWord = result;
 
         return this.resultWord;
-      });
-    }
+    });
   };
 
-  public getSimilarWord = (myWord?: string, position?: number, property?) => {
-    const url = `https://api.datamuse.com/words?ml=${myWord}`;
+  public getSimilarWord = (theWord: string): Promise<JSON> => {
+    const url = `https://api.datamuse.com/words?ml=${theWord}`;
 
-    if (position !== undefined) {
-      return getData(url).then(result => {
-        this.resultWord = result[position][property];
+    return getData(url).then(result => {
+      this.resultWord = result;
 
-        return this.resultWord;
-      });
-    } else {
-      return getData(url).then(result => {
-        this.resultWord = result;
-
-        return this.resultWord;
-      });
-    }
+      return this.resultWord;
+    });
   };
 
-  public getUsedToDescribeWord = (
-    myWord?: string,
-    position?: number,
-    property?
-  ) => {
-    const url = `https://api.datamuse.com/words?rel_jjb=${myWord}`;
+  public getDescribeWord = (theWord: string): Promise<JSON> => {
+    const url = `https://api.datamuse.com/words?rel_jjb=${theWord}`;
 
-    if (position !== undefined) {
-      return getData(url).then(result => {
-        this.resultWord = result[position][property];
+    return getData(url).then(result => {
+      this.resultWord = result;
 
-        return this.resultWord;
-      });
-    } else {
-      return getData(url).then(result => {
-        this.resultWord = result;
-
-        return this.resultWord;
-      });
-    }
+      return this.resultWord;
+    });
   };
 }
