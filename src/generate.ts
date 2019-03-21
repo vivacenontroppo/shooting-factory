@@ -1,6 +1,6 @@
 import { getData } from './request';
 
-export class Generate {
+export class Generator {
   public resultsList: HTMLUListElement;
   public rhymeButton: HTMLButtonElement;
   public similarWordButton: HTMLButtonElement;
@@ -54,5 +54,12 @@ export class Generate {
       this.resultsList.removeChild(this.resultsList.firstElementChild);
     }
   };
+
+  public insertText = (text: string): void => {
+    const liElement = document.createElement('LI');
+    const textnode = document.createTextNode(text);
+    liElement.appendChild(textnode);
+    this.resultsList.appendChild(liElement);
+  }
 
 }

@@ -1,6 +1,6 @@
-import { Generate } from './generate';
+import { Generator } from './generate';
 
-const generator = new Generate();
+const generator = new Generator();
 
 const init = (): void => {
   generator.rhymeButton.addEventListener('click', () => {
@@ -8,15 +8,17 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getRhymeWord(word).then(value => {
-        for (let i = 0; i < 10; i++) {
-          const node = document.createElement('LI');
-          const textnode = document.createTextNode(
-            `${i + 1}: ${word} rhymes to ${value[i].word}`
-          );
-          node.appendChild(textnode);
-          generator.resultsList.appendChild(node);
+        if (value > JSON) {
+          for (let i = 0; i < 10; i++) {
+              generator.insertText(`${i + 1}: ${word} rhymes to ${value[i].word}`);
+          }
+        } else {
+          generator.insertText('No match for that word!');
         }
       });
+    } else {
+      generator.clear();
+      generator.insertText(`Type something first`);
     }
   });
 
@@ -25,15 +27,17 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getSimilarWord(word).then(value => {
-        for (let i = 0; i < 10; i++) {
-          const node = document.createElement('LI');
-          const textnode = document.createTextNode(
-            `${i + 1}: ${word} is similar to ${value[i].word}`
-          );
-          node.appendChild(textnode);
-          generator.resultsList.appendChild(node);
+        if (value > JSON) {
+          for (let i = 0; i < 10; i++) {
+              generator.insertText(`${i + 1}: ${word} is similar to ${value[i].word}`);
+          }
+        } else {
+          generator.insertText(`No match for that word!`);
         }
       });
+    } else {
+      generator.clear();
+      generator.insertText(`Type something first`);
     }
   });
 
@@ -42,15 +46,17 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getDescribeWord(word).then(value => {
-        for (let i = 0; i < 10; i++) {
-          const node = document.createElement('LI');
-          const textnode = document.createTextNode(
-            `${i + 1}: ${word} can be described with ${value[i].word}`
-          );
-          node.appendChild(textnode);
-          generator.resultsList.appendChild(node);
+        if (value > JSON) {
+          for (let i = 0; i < 10; i++) {
+              generator.insertText(`${i + 1}: ${word} can be described with ${value[i].word}`);
+          }
+        } else {
+          generator.insertText(`No match for that word!`);
         }
       });
+    } else {
+      generator.clear();
+      generator.insertText(`Type something first`);
     }
   });
 };
