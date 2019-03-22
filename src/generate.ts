@@ -1,6 +1,5 @@
 import { getData } from './request';
 
-
 export interface IRhyme {
   word: string;
 }
@@ -10,7 +9,7 @@ export class Generator {
   public similarWordButton: HTMLButtonElement;
   public usedToDescribe: HTMLButtonElement;
   public input: HTMLInputElement;
-  public resultWord: Array<IRhyme>;
+  public resultWord: IRhyme[];
   public listElement: HTMLCollectionOf<HTMLLIElement>;
 
   constructor() {
@@ -22,22 +21,22 @@ export class Generator {
     this.listElement = document.getElementsByTagName('li');
   }
 
-  public getRhymeWord = (theWord: string): Promise<Array<IRhyme>> => {
+  public getRhymeWord = (theWord: string): Promise<IRhyme[]> => {
     const url = `https://api.datamuse.com/words?rel_rhy=${theWord}`;
 
     return getData(url);
   };
 
-  public getSimilarWord = (theWord: string): Promise<Array<IRhyme>> => {
+  public getSimilarWord = (theWord: string): Promise<IRhyme[]> => {
     const url = `https://api.datamuse.com/words?ml=${theWord}`;
 
-    return getData(url)
+    return getData(url);
   };
 
-  public getDescribeWord = (theWord: string): Promise<Array<IRhyme>> => {
+  public getDescribeWord = (theWord: string): Promise<IRhyme[]> => {
     const url = `https://api.datamuse.com/words?rel_jjb=${theWord}`;
 
-    return getData(url)
+    return getData(url);
   };
 
   public clear = (): void => {

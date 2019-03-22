@@ -1,5 +1,5 @@
 import { Generator } from './generate';
- 
+
 const generator = new Generator();
 
 const init = (): void => {

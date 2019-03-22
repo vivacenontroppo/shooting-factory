@@ -1,6 +1,6 @@
-import { IRhyme } from "./generate";
+import { IRhyme } from './generate';
 
-const getData = async (url: string): Promise<Array<IRhyme>> => {
+const getData = async (url: string): Promise<IRhyme[]> => {
   try {
     const response = await fetch(url);
     if (response.ok) {
