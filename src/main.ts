@@ -1,5 +1,5 @@
 import { Generator } from './generate';
-
+ 
 const generator = new Generator();
 
 const init = (): void => {
@@ -8,7 +8,7 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getRhymeWord(word).then(value => {
-        if (value > JSON) {
+        if (value.length > 0) {
           for (let i = 0; i < 10; i++) {
               generator.insertText(`${i + 1}: ${word} rhymes to ${value[i].word}`);
           }
@@ -27,7 +27,7 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getSimilarWord(word).then(value => {
-        if (value > JSON) {
+        if (value.length > 0) {
           for (let i = 0; i < 10; i++) {
               generator.insertText(`${i + 1}: ${word} is similar to ${value[i].word}`);
           }
@@ -46,7 +46,7 @@ const init = (): void => {
       generator.clear();
       const word = generator.input.value;
       generator.getDescribeWord(word).then(value => {
-        if (value > JSON) {
+        if (value.length > 0) {
           for (let i = 0; i < 10; i++) {
               generator.insertText(`${i + 1}: ${word} can be described with ${value[i].word}`);
           }

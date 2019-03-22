@@ -1,12 +1,16 @@
 import { getData } from './request';
 
+
+export interface IRhyme {
+  word: string;
+}
 export class Generator {
   public resultsList: HTMLUListElement;
   public rhymeButton: HTMLButtonElement;
   public similarWordButton: HTMLButtonElement;
   public usedToDescribe: HTMLButtonElement;
   public input: HTMLInputElement;
-  public resultWord: JSON;
+  public resultWord: Array<IRhyme>;
   public listElement: HTMLCollectionOf<HTMLLIElement>;
 
   constructor() {
@@ -18,34 +22,22 @@ export class Generator {
     this.listElement = document.getElementsByTagName('li');
   }
 
-  public getRhymeWord = (theWord: string): Promise<JSON> => {
+  public getRhymeWord = (theWord: string): Promise<Array<IRhyme>> => {
     const url = `https://api.datamuse.com/words?rel_rhy=${theWord}`;
 
-    return getData(url).then(result => {
-        this.resultWord = result;
-
-        return this.resultWord;
-    });
+    return getData(url);
   };
 
-  public getSimilarWord = (theWord: string): Promise<JSON> => {
+  public getSimilarWord = (theWord: string): Promise<Array<IRhyme>> => {
     const url = `https://api.datamuse.com/words?ml=${theWord}`;
 
-    return getData(url).then(result => {
-      this.resultWord = result;
-
-      return this.resultWord;
-    });
+    return getData(url)
   };
 
-  public getDescribeWord = (theWord: string): Promise<JSON> => {
+  public getDescribeWord = (theWord: string): Promise<Array<IRhyme>> => {
     const url = `https://api.datamuse.com/words?rel_jjb=${theWord}`;
 
-    return getData(url).then(result => {
-      this.resultWord = result;
-
-      return this.resultWord;
-    });
+    return getData(url)
   };
 
   public clear = (): void => {

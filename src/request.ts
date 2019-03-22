@@ -1,4 +1,6 @@
-const getData = async (url: string): Promise<JSON> => {
+import { IRhyme } from "./generate";
+
+const getData = async (url: string): Promise<Array<IRhyme>> => {
   try {
     const response = await fetch(url);
     if (response.ok) {
