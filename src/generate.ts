@@ -4,21 +4,20 @@ export interface IRhyme {
   word: string;
 }
 export class Generator {
-  public resultsList: HTMLUListElement;
   public rhymeButton: HTMLButtonElement;
   public similarWordButton: HTMLButtonElement;
-  public usedToDescribe: HTMLButtonElement;
+  public usedToDescribeButton: HTMLButtonElement;
   public input: HTMLInputElement;
-  public resultWord: IRhyme[];
-  public listElement: HTMLCollectionOf<HTMLLIElement>;
+  private resultsList: HTMLUListElement;
+  private listElement: HTMLCollectionOf<HTMLLIElement>;
 
   constructor() {
-    this.resultsList = document.getElementById('list') as HTMLUListElement;
     this.rhymeButton = document.getElementById('rhyme') as HTMLButtonElement;
     this.similarWordButton = document.getElementById('similar') as HTMLButtonElement;
-    this.usedToDescribe = document.getElementById('describe') as HTMLButtonElement;
+    this.usedToDescribeButton = document.getElementById('describe') as HTMLButtonElement;
     this.input = document.getElementById('input') as HTMLInputElement;
     this.listElement = document.getElementsByTagName('li');
+    this.resultsList = document.getElementById('list') as HTMLUListElement;
   }
 
   public getRhymeWord = (theWord: string): Promise<IRhyme[]> => {

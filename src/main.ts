@@ -41,7 +41,7 @@ const init = (): void => {
     }
   });
 
-  generator.usedToDescribe.addEventListener('click', () => {
+  generator.usedToDescribeButton.addEventListener('click', () => {
     if (generator.input.value) {
       generator.clear();
       const word = generator.input.value;
