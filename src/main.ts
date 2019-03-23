@@ -1,3 +1,8 @@
+window.onload = (): void => {
+  const webhostImage = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+  webhostImage.parentNode.removeChild(webhostImage);
+};
+
 import { Generator } from './generate';
 
 const generator = new Generator();
@@ -59,6 +64,7 @@ const init = (): void => {
       generator.insertText(`Type something first`);
     }
   });
+
 };
 
 init();
