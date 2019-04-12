@@ -8,6 +8,7 @@ export class Generator {
   public similarWordButton: HTMLButtonElement;
   public usedToDescribeButton: HTMLButtonElement;
   public input: HTMLInputElement;
+  public footer: any;
   private resultsList: HTMLUListElement;
   private listElement: HTMLCollectionOf<HTMLLIElement>;
 
@@ -18,6 +19,7 @@ export class Generator {
     this.input = document.getElementById('input') as HTMLInputElement;
     this.listElement = document.getElementsByTagName('li');
     this.resultsList = document.getElementById('list') as HTMLUListElement;
+    this.footer = document.getElementById('copyright');
   }
 
   public getRhymeWord = (theWord: string): Promise<IRhyme[]> => {
@@ -49,7 +51,7 @@ export class Generator {
     const liElement = document.createElement('LI');
     const textnode = document.createTextNode(text);
     liElement.appendChild(textnode);
-    this.resultsList.appendChild(liElement);
+    this.resultsList.appendChild(liElement)
   }
 
 }

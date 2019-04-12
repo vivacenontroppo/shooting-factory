@@ -14,4 +14,9 @@ const getData = async (url: string): Promise<IRhyme[]> => {
   }
 };
 
+// const getData = (url: string): Promise<IRhyme[]> => 
+//   fetch(url).then(res => res.json())
+//   .catch(console.error)
+// ;
+
 export { getData };
