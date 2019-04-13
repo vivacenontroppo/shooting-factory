@@ -1,6 +1,6 @@
 import { getData } from './request';
 
-export interface IRhyme {
+export interface IResWords {
   word: string;
 }
 export class Generator {
@@ -8,7 +8,7 @@ export class Generator {
   public similarWordButton: HTMLButtonElement;
   public usedToDescribeButton: HTMLButtonElement;
   public input: HTMLInputElement;
-  public footer: any;
+  public footer: HTMLElement;
   private resultsList: HTMLUListElement;
   private listElement: HTMLCollectionOf<HTMLLIElement>;
 
@@ -19,22 +19,22 @@ export class Generator {
     this.input = document.getElementById('input') as HTMLInputElement;
     this.listElement = document.getElementsByTagName('li');
     this.resultsList = document.getElementById('list') as HTMLUListElement;
-    this.footer = document.getElementById('copyright');
+    this.footer = document.getElementById('copyright') as HTMLElement;
   }
 
-  public getRhymeWord = (theWord: string): Promise<IRhyme[]> => {
+  public getRhymeWord = (theWord: string): Promise<IResWords[]> => {
     const url = `https://api.datamuse.com/words?rel_rhy=${theWord}`;
 
     return getData(url);
   };
 
-  public getSimilarWord = (theWord: string): Promise<IRhyme[]> => {
+  public getSimilarWord = (theWord: string): Promise<IResWords[]> => {
     const url = `https://api.datamuse.com/words?ml=${theWord}`;
 
     return getData(url);
   };
 
-  public getDescribeWord = (theWord: string): Promise<IRhyme[]> => {
+  public getDescribeWord = (theWord: string): Promise<IResWords[]> => {
     const url = `https://api.datamuse.com/words?rel_jjb=${theWord}`;
 
     return getData(url);
