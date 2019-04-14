@@ -17,7 +17,7 @@ export class Generator {
     this.similarWordButton = document.getElementById('similar') as HTMLButtonElement;
     this.usedToDescribeButton = document.getElementById('describe') as HTMLButtonElement;
     this.input = document.getElementById('input') as HTMLInputElement;
-    this.listElement = document.getElementsByTagName('li');
+    this.listElement = document.getElementsByTagName('li') as HTMLCollectionOf<HTMLLIElement>; 
     this.resultsList = document.getElementById('list') as HTMLUListElement;
     this.footer = document.getElementById('copyright') as HTMLElement;
   }
