@@ -9,7 +9,7 @@ const generator = new Generator();
 
 const init = (): void => {
   generator.rhymeButton.addEventListener('click', () => {
-    if (generator.input.value) {
+    if (generator.input.value.trim()) {
       generator.clear();
       const word = generator.input.value;
       generator.getRhymeWord(word).then(value => {
@@ -28,7 +28,7 @@ const init = (): void => {
   });
 
   generator.similarWordButton.addEventListener('click', () => {
-    if (generator.input.value) {
+    if (generator.input.value.trim()) {
       generator.clear();
       const word = generator.input.value;
       generator.getSimilarWord(word).then(value => {
@@ -47,7 +47,7 @@ const init = (): void => {
   });
 
   generator.usedToDescribeButton.addEventListener('click', () => {
-    if (generator.input.value) {
+    if (generator.input.value.trim()) {
       generator.clear();
       const word = generator.input.value;
       generator.getDescribeWord(word).then(value => {
